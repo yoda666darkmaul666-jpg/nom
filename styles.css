@@ -1,0 +1,125 @@
+/* === Styles généraux === */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Orbitron', sans-serif;
+    background-color: #0b0b0b;
+    color: #f2f2f2;
+    line-height: 1.6;
+}
+
+a {
+    color: #ff0000;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+a:hover {
+    color: #ff5555;
+}
+
+/* === Header === */
+header {
+    background-color: #111;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 0 10px #ff0000;
+}
+
+header h1 {
+    font-size: 3rem;
+    color: #ff0000;
+    text-shadow: 0 0 10px #1900ff, 0 0 20px #ff0000, 0 0 30px #ff4444;
+    margin: 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0 0;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+nav ul li a {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* === Sections === */
+section {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 20px;
+    border-left: 5px solid #ff0000;
+    background-color: rgba(20, 20, 20, 0.8);
+    box-shadow: 0 0 15px #ff0000;
+    border-radius: 10px;
+    animation: glow 2s infinite alternate;
+}
+
+section img {
+    display: block;
+    margin: 0 auto 20px auto;
+    width: 40%;
+    border: 3px solid #ff0000;
+    border-radius: 10px;
+    box-shadow: 0 0 15px #ff0000;
+}
+
+/* === Titres de section === */
+section h2 {
+    color: #ff0000;
+    font-size: 2rem;
+    text-align: center;
+    text-shadow: 0 0 5px #ff0000, 0 0 10px #ff4444;
+}
+
+/* === Paragraphes === */
+section p {
+    font-size: 1.1rem;
+    margin: 10px 0;
+}
+
+/* === Navigation Pages === */
+nav {
+    text-align: center;
+    margin: 50px 0;
+}
+
+nav a {
+    display: inline-block;
+    margin: 0 15px;
+    padding: 10px 20px;
+    border: 2px solid #ff0000;
+    border-radius: 5px;
+    text-shadow: 0 0 5px #ff0000;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    background-color: #ff0000;
+    color: #0b0b0b;
+    box-shadow: 0 0 10px #ff0000, 0 0 20px #ff5555;
+}
+
+/* === Footer === */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #111;
+    color: #ff0000;
+    text-shadow: 0 0 5px #ff0000;
+    box-shadow: 0 -2px 10px #ff0000;
+}
+
+/* === Animation néon === */
+@keyframes glow {
+    from {
+        box-shadow: 0 0 15px #ff0000;
+    }
+    to {
+        box-shadow: 0 0 30px #ff5555;
+    }
+}

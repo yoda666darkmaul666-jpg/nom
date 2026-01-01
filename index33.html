@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Metal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #111;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .quiz-container {
+            background: rgba(20, 20, 20, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 0 20px #ff3300;
+        }
+
+        h2 {
+            color: #ff3300;
+            text-align: center;
+        }
+
+        .option {
+            background: #222;
+            margin: 10px 0;
+            padding: 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .option:hover {
+            background: #ff3300;
+            color: #000;
+        }
+
+        button {
+            margin-top: 20px;
+            width: 100%;
+            padding: 12px;
+            background: #ff3300;
+            color: #000;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        button:hover {
+            background: #ff6600;
+        }
+
+        #score {
+            font-size: 1.3em;
+            text-align: center;
+            margin-top: 15px;
+            color: #ffcc00;
+        }
+    </style>
+</head>
+
+<body>
+    
+
+    <div class="quiz-container">
+        <h2>Quiz Metal 🎸</h2>
+        <div id="quiz">
+            <p id="question"></p>
+            <div id="options"></div>
+            <button id="nextBtn">Suivant</button>
+            <p id="score"></p>
+        </div>
+    </div>
+
+
+
+   
+
+<script>
+function goBack() {
+  if (window.history.length > 1) {
+    window.history.back();
+  } else {
+    window.location.href = "index.html";
+  }
+}
+</script>
+
+
+<script>
+function goBack() {
+  if (window.history.length > 1) {
+    window.history.back();
+  } else {
+    window.location.href = "index.html";
+  }
+}
+</script>
+
+
+    <script>
+        const quizData = [
+            {
+                question: "Quel groupe est considéré comme le pionnier du heavy metal ?",
+                options: ["Metallica", "Black Sabbath", "Iron Maiden", "Linkin Park"],
+                reponse: "Black Sabbath"
+            },
+            {
+                question: "Quel sous-genre de metal est caractérisé par des tempos rapides et des riffs agressifs ?",
+                options: ["Thrash Metal", "Power Metal", "Doom Metal", "Folk Metal"],
+                reponse: "Thrash Metal"
+            },
+            {
+                question: "Quel groupe finlandais est célèbre pour son metal symphonique ?",
+                options: ["Nightwish", "Rammstein", "Children of Bodom", "Amon Amarth"],
+                reponse: "Nightwish"
+            },
+            {
+                question: "Quel album de Metallica est surnommé 'le Black Album' ?",
+                options: ["Master of Puppets", "Ride the Lightning", "Metallica", "Kill 'Em All"],
+                reponse: "Metallica"
+            },
+            {
+                question: "Quel groupe est connu pour ses performances scéniques théâtrales et son maquillage distinctif ?",
+                options: ["KISS", "Slipknot", "Marilyn Manson", "Ghost"],
+                reponse: "KISS"
+            },
+            {
+                question: "Quel instrument est souvent utilisé dans le folk metal ?",
+                options: ["Violon", "Saxophone", "Piano", "Harmonica"],
+                reponse: "Violon"
+            }
+
+
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+
+        const questionEl = document.getElementById("question");
+        const optionsEl = document.getElementById("options");
+        const nextBtn = document.getElementById("nextBtn");
+        const scoreEl = document.getElementById("score");
+
+        function loadQuestion() {
+            const currentQuiz = quizData[currentQuestion];
+            questionEl.textContent = currentQuiz.question;
+            optionsEl.innerHTML = "";
+
+            currentQuiz.options.forEach(option => {
+                const button = document.createElement("div");
+                button.classList.add("option");
+                button.textContent = option;
+                button.addEventListener("click", () => selectAnswer(option));
+                optionsEl.appendChild(button);
+            });
+        }
+
+        function selectAnswer(selected) {
+            const currentQuiz = quizData[currentQuestion];
+            if (selected === currentQuiz.answer) {
+                score++;
+            }
+
+            currentQuestion++;
+            if (currentQuestion < quizData.length) {
+                loadQuestion();
+            } else {
+                showScore();
+            }
+        }
+
+        function showScore() {
+            questionEl.textContent = "Quiz terminé !";
+            optionsEl.innerHTML = "";
+            nextBtn.style.display = "none";
+            scoreEl.textContent = `Votre score : ${score} / ${quizData.length}`;
+        }
+
+        nextBtn.addEventListener("click", () => {
+            loadQuestion();
+        });
+
+        // Initialisation
+        loadQuestion();
+    </script>
+
+
+
+
+
+</body>
+
+</html>
