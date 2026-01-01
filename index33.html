@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
 
-
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -74,43 +72,16 @@
 </head>
 
 <body>
-    
 
     <div class="quiz-container">
         <h2>Quiz Metal 🎸</h2>
         <div id="quiz">
             <p id="question"></p>
             <div id="options"></div>
-            <button id="nextBtn">Suivant</button>
+            <button id="nextBtn" style="display: none;">Suivant</button>
             <p id="score"></p>
         </div>
     </div>
-
-
-
-   
-
-<script>
-function goBack() {
-  if (window.history.length > 1) {
-    window.history.back();
-  } else {
-    window.location.href = "index.html";
-  }
-}
-</script>
-
-
-<script>
-function goBack() {
-  if (window.history.length > 1) {
-    window.history.back();
-  } else {
-    window.location.href = "index.html";
-  }
-}
-</script>
-
 
     <script>
         const quizData = [
@@ -144,8 +115,6 @@ function goBack() {
                 options: ["Violon", "Saxophone", "Piano", "Harmonica"],
                 reponse: "Violon"
             }
-
-
         ];
 
         let currentQuestion = 0;
@@ -172,11 +141,14 @@ function goBack() {
 
         function selectAnswer(selected) {
             const currentQuiz = quizData[currentQuestion];
-            if (selected === currentQuiz.answer) {
+            
+            // FIX: Changed .answer to .reponse to match your quizData
+            if (selected === currentQuiz.reponse) {
                 score++;
             }
 
             currentQuestion++;
+            
             if (currentQuestion < quizData.length) {
                 loadQuestion();
             } else {
@@ -185,24 +157,21 @@ function goBack() {
         }
 
         function showScore() {
-            questionEl.textContent = "Quiz terminé !";
+            questionEl.textContent = "🤘 Quiz terminé ! 🤘";
             optionsEl.innerHTML = "";
             nextBtn.style.display = "none";
             scoreEl.textContent = `Votre score : ${score} / ${quizData.length}`;
+            
+            // Optional: Show a restart button
+            const restartBtn = document.createElement("button");
+            restartBtn.textContent = "Recommencer";
+            restartBtn.onclick = () => location.reload();
+            optionsEl.appendChild(restartBtn);
         }
-
-        nextBtn.addEventListener("click", () => {
-            loadQuestion();
-        });
 
         // Initialisation
         loadQuestion();
     </script>
 
-
-
-
-
 </body>
-
 </html>
